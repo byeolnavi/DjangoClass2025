@@ -9,12 +9,12 @@ CBV로 페이지 만들기
 
 class PostList(ListView):
     model = Post
-    # template_name = 'blog/index.html' # 지정하지 않으면 자동으로 인식
+    template_name = 'blog/post_list.html' # 지정하지 않으면 자동으로 인식
     ordering = '-pk'
 
 class PostDetail(DetailView) :
     model = Post
-    template_name = 'blog/single_post_page.html'
+    template_name = 'blog/post_detail.html'
 
 '''
 FBV로 페이지 만들기 
