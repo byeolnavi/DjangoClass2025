@@ -82,10 +82,17 @@
                 <!-- Blog post-->
                 {% for p in post_list %}
                 <div class="card mb-4">
-                    <a href="#!"><img class="card-img-top" src="{{ p.head_image.url }}" alt="..." /></a>
+                    {% if p.head_image %}
+                        <a href="#!"><img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head image" /></a>
+                    {% else %}
+                        <a href="#!"><img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}/800/200" alt="random_image" /></a>
+                    {% endif %}
                     <div class="card-body">
-                        <h2 class="card-title h4"><i></i>{{ p.title }}</h2>
-                        <p class="card-text">{{ p.content }}</p>
+                        <h2 class="card-title"><i></i>{{ p.title }}</h2>
+                        {% if p.hook_text %}
+                            <h5 class="text-muted">{{ p.hook_text }}</h5>
+                        {% endif %}
+                        <p class="card-text">{{ p.content | truncatewords:8 }}</p>
                         <a class="btn btn-light" href="{{ p.get_absolute_url }}">더 읽기 →</a>
                     </div>
                     <div class ="card-footer text-muted">z
