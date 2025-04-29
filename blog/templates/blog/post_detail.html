@@ -8,29 +8,30 @@
         <meta name="author" content="" />
         <title>{{ post.title }} - Blog </title>
         <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen"/>
-        <!-- Favicon-->
-        <link rel="icon" href="{% static 'blog/icon/01.png' %}">
+        <!-- icon-->
+        <link rel="icon" href="{% static 'blog/icon/02.png' %}">
         <!-- Core theme CSS (includes Bootstrap)-->
         <link rel="stylesheet" href="{% static 'blog/css/styles.css' %}"/>
         <script src="https://kit.fontawesome.com/80ee7a8a89.js" crossorigin="anonymous"></script>
     </head>
     <body>
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="./index.html">한별이 블로그</a>
+                <a class="navbar-brand" href="../index.html">한별이 블로그</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="./about_me.html">내가 누구게</a>
+                        <a class="nav-link" href="../about_me.html">내가 누구게</a>
                         </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="./index.html">연습장</a>
+                    <a class="nav-link" href="../index.html">연습장</a>
                     </li>
                     <li class="nav-item active">
-                    <a class="nav-link" href="./blog_list.html"><span class="sr-only">(current)</span>블로그</a>
+                    <a class="nav-link" href="../blog_list.html"><span class="sr-only">(current)</span>게시판</a>
                     </li>
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,6 +51,7 @@
                 </ul>
             </div>
         </nav>
+
         <!-- Modal -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -92,8 +94,7 @@
                             <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2">Posted on {{ post.created_at }}</div>
                             <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                            
                         </header>
                         <!-- Preview image figure-->
                         {% if post.head_image %}
