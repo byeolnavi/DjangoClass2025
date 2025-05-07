@@ -12,6 +12,8 @@ class TestView(TestCase):
     
     def navbar_test(self, soup) :
         navbar = soup.nav
+        self.assertIsNotNone(navbar, "페이지에 <nav> 태그가 존재하지 않습니다.")
+
         self.assertIn('Blog', navbar.text)
         self.assertIn('About Me', navbar.text)
 
