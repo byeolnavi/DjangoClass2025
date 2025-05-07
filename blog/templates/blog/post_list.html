@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>블로그</title>
+    <title>Blog</title>
     <link rel="icon" href="{% static 'blog/icon/01.png' %}">
     <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
     <script src="https://kit.fontawesome.com/80ee7a8a89.js" crossorigin="anonymous"></script>
@@ -21,13 +21,13 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../about_me/">내가 누구게</a>
+                    <a class="nav-link" href="../about_me/">About Me</a>
                     </li>
                 <li class="nav-item">
                 <a class="nav-link" href="./index.html">연습장</a>
                 </li>
                 <li class="nav-item active">
-                <a class="nav-link" href="./blog_list.html"><span class="sr-only">(current)</span>게시판</a>
+                <a class="nav-link" href="./blog_list.html"><span class="sr-only">(current)</span>Blog</a>
                 </li>
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -78,30 +78,35 @@
 
     <div class="container my-3">
         <div class="row">
-            <div class="col-md-8 col-lg-9">
+            <div class="col-md-8 col-lg-9" id="main-area">
                 <h1>게시판</h1>
                 <!-- Blog post-->
-                {% for p in post_list %}
-                <div class="card mb-4">
-                    {% if p.head_image %}
-                        <a href="#!"><img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head image" /></a>
-                    {% else %}
-                        <a href="#!"><img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}/800/200" alt="random_image" /></a>
-                    {% endif %}
-                    <div class="card-body">
-                        <h2 class="card-title"><i></i>{{ p.title }}</h2>
-                        {% if p.hook_text %}
-                            <h5 class="text-muted">{{ p.hook_text }}</h5>
+                {% if post_list.exists %}
+                    {% for p in post_list %}
+                    <div class="card mb-4">
+                        {% if p.head_image %}
+                            <a href="#!"><img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head image" /></a>
+                        {% else %}
+                            <a href="#!"><img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}/800/200" alt="random_image" /></a>
                         {% endif %}
-                        <p class="card-text">{{ p.content | truncatewords:8 }}</p>
-                        <a class="btn btn-light" href="{{ p.get_absolute_url }}">더 읽기 →</a>
+                        <div class="card-body">
+                            <h2 class="card-title"><i></i>{{ p.title }}</h2>
+                            {% if p.hook_text %}
+                                <h5 class="text-muted">{{ p.hook_text }}</h5>
+                            {% endif %}
+                            <p class="card-text">{{ p.content | truncatewords:8 }}</p>
+                            <a class="btn btn-light" href="{{ p.get_absolute_url }}">더 읽기 →</a>
+                        </div>
+                        <div class ="card-footer text-muted">z
+                            Posted on {{ p.created_at }} by
+                            <a href = "#">작성자명 쓸 위치(개발예정)</a>
+                        </div>
                     </div>
-                    <div class ="card-footer text-muted">z
-                        Posted on {{ p.created_at }} by
-                        <a href = "#">작성자명 쓸 위치(개발예정)</a>
-                    </div>
-                </div>
-                {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <h3>아직 게시물이 없습니다.</h3>
+                {% endif %}
+                
                 <!-- Pagination-->
                 <nav aria-label="Pagination">
                     <hr class="my-0" />
