@@ -1,10 +1,15 @@
 from django.test import TestCase, Client
 from bs4 import BeautifulSoup
 from .models import Post
+from django.contrib.auth.models import User
 
 class TestView(TestCase):
     def setUp(self):
         self.client = Client()
+        self.user_trump = User.objects.create_user(username='trump', 
+                                                   password='somepassword')
+        self.user_obama = User.objects.create_user(username='obama',
+                                                   password='somepassword')
 
     def footer_test(self, soup) :
         footer = soup.footer 
